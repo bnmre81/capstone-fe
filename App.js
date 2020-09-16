@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import MovieList from "./Components/MovieList";
+import MovieList from "./components/MovieList";
 
 export default function App() {
   return (
