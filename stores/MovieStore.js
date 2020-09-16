@@ -5,8 +5,7 @@ class MovieStore {
 
   latestList = () => {
     fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=a6358e507fbfbbc6c17a38f10a736e3f
-          `
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=a6358e507fbfbbc6c17a38f10a736e3f`
     )
       .then((data) => data.json())
       .then((data) => {

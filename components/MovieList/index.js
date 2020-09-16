@@ -9,6 +9,9 @@ import movieStore from "../../stores/MovieStore";
 import { BoxListContainer } from "./listStyles";
 import { BoxItemContainer, BoxItemImage, BoxItemText } from "./itemStyles";
 import { observer } from "mobx-react";
+import UpButton from "../buttons/UpButton";
+import DownButton from "../buttons/DownButton";
+import Nominate from "../buttons/Nominate";
 
 const MovieList = () => {
   if (!movieStore.movies) return <Spinner />;
@@ -35,6 +38,7 @@ const MovieList = () => {
                   }}
                 />
                 <BoxItemText>{item.title}</BoxItemText>
+                <Nominate />
               </Card>
             </>
           );
