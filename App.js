@@ -1,61 +1,55 @@
-import { Card, Input, Text } from "native-base";
+import { observer } from "mobx-react";
+import { Card, Spinner, Text } from "native-base";
 import React, { useState } from "react";
 import { FlatList, TextInput, View, Image } from "react-native";
-import { SearchBar } from "react-native-elements";
+import movieStore from "./stores/MovieStore";
 
 export default function App() {
   const [query, setQuery] = useState("whiplash");
 
-  const [movies, setMovies] = useState([]);
+  if (!movieStore.movies) return <Spinner />;
+  const movies = movieStore.movies;
 
-  const performSearch = async () => {
-    await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=a6358e507fbfbbc6c17a38f10a736e3f&language=en-US&query=${query}&page=1&include_adult=false`
-    )
-      .then((data) => data.json())
-      .then((data) => {
-        setMovies(...data.results);
-      });
-  };
+  let randomMovies = [
+    movies[Math.random() * (movies.length - 0)],
+    movies[Math.random() * (movies.length - 0)],
+    movies[Math.random() * (movies.length - 0)],
+    movies[Math.random() * (movies.length - 0)],
+  ];
 
-  console.log(query);
-  console.log(movies);
+  // for (let i = 0; i < 5; i++) {
+  //   randomMovies.push(movies[Math.random() * (movies.length - 0)]);
+  // }
+
   return (
     <View>
       <TextInput
         style={{ margin: 20 }}
         placeholder="search for a movie"
         onChangeText={(text) => setQuery(text)}
-        onSubmitEditing={performSearch}
+        onSubmitEditing={() => performSearch()}
       />
-      {/* <FlatList
-        keyExtractor={(item) => item.id}
-        data={movies}
-        extraData={query}
-        renderItem={({ movie }) => {
-          return (
-            <Card>
-              <Text>
-                {console.log("im here")}
-                title : {movie.title} , popularity: {movie.popularity} ,
-                voteCount:{movie.vote_count}
-              </Text>
-            </Card>
-          );
-        }}
-      /> */}
-      <Image
-        source={{
-          uri:
-            "https://image.tmdb.org/t/p/w500/qq8xf2SQqHifUUyc0k6Hj1065f1.jpg",
-        }}
-        style={{ height: 200, width: 100, flex: 1 }}
-      />
-      <Text>
-        {console.log("im here")}
-        title : {movies.title} , popularity: {movies.popularity} , voteCount:
-        {movies.vote_count}
-      </Text>
+      {randomMovies === [] ? (
+        <>
+          <Spinner />
+        </>
+      ) : (
+        <>
+          <FlatList
+            keyExtractor={(item) => item.id}
+            data={randomMovies}
+            renderItem={({ item }) => {
+              return (
+                <View>
+                  <Card>
+                    <Text>{item.title}</Text>
+                  </Card>
+                </View>
+              );
+            }}
+          />
+        </>
+      )}
     </View>
   );
 }
