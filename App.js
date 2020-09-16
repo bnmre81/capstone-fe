@@ -1,11 +1,10 @@
 import React from "react";
-import { View } from "react-native";
-import MovieList from "./components/MovieList";
+import MainStack from "./components/navigation";
 
 export default function App() {
   return (
-    <View>
-      <MovieList />
-    </View>
+    <>
+      <MainStack />
+    </>
   );
 }
