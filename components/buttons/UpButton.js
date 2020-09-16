@@ -3,16 +3,16 @@ import React from "react";
 import { View, Text } from "native-base";
 import { TouchableOpacity } from "react-native";
 
-const Nominate = () => {
+const UpButton = () => {
   const handleVote = () => {
-    alert("you nominated a movie!");
+    alert("Up vote!");
   };
   return (
     <View>
       <TouchableOpacity onPress={handleVote}>
-        <Text>Nominate</Text>
+        <Text>Up Vote</Text>
       </TouchableOpacity>
     </View>
   );
 };
-export default Nominate;
+export default UpButton;
