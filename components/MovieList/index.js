@@ -6,6 +6,7 @@ import { FlatList, ScrollView } from "react-native";
 import movieStore from "../../stores/MovieStore";
 
 // styles
+// maybe combine the two styles files into one?
 import { BoxListContainer } from "./listStyles";
 import { BoxItemContainer, BoxItemImage, BoxItemText } from "./itemStyles";
 import { observer } from "mobx-react";
@@ -13,10 +14,14 @@ import UpButton from "../buttons/UpButton";
 import DownButton from "../buttons/DownButton";
 import Nominate from "../buttons/Nominate";
 
+// so many unused imports
+
 const MovieList = () => {
   if (!movieStore.movies) return <Spinner />;
+  // destructure this
   const movies = movieStore.movies;
 
+  /* remove commented code */
   // const randomMovies = [];
   // if (movies)
   //   for (let i = 0; i < 5; i++) {
@@ -28,6 +33,7 @@ const MovieList = () => {
         keyExtractor={(item) => item.id}
         data={movies}
         renderItem={({ item }) => {
+          // no need for Fragments
           return (
             <>
               <Card>

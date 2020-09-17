@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { View, Image, Text } from "native-base";
+import { View, Image, Text } from "native-base";  // unused imports
 
 export const BoxItemContainer = styled.View`
   width: 50%;
