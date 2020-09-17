@@ -6,7 +6,7 @@ import { FlatList } from "react-native";
 const NominatedList = () => {
   return (
     <BoxListContainer>
-      <Text>naminated list</Text>
+      <Text>Nominated list</Text>
       <FlatList
         keyExtractor={(item) => item.id}
         data={movies}
@@ -22,9 +22,6 @@ const NominatedList = () => {
                 }}
               />
               <BoxItemText>{item.title}</BoxItemText>
-              <TouchableOpacity
-                onPress={() => handleNaminate(item)}
-              ></TouchableOpacity>
             </Card>
           );
         }}

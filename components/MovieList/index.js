@@ -15,11 +15,11 @@ const MovieList = ({ Navigation }) => {
 
   const { movies } = movieStore;
 
-  const naminatedMovies = [];
+  const nominatedMovies = [];
 
-  const handleNaminate = (item) => {
-    naminatedMovies.push(item.title);
-    console.log(naminatedMovies);
+  const handleNominate = (item) => {
+    nominatedMovies.push(item);
+    console.log(nominatedMovies);
   };
   return (
     <BoxListContainer>
@@ -38,7 +38,7 @@ const MovieList = ({ Navigation }) => {
                 }}
               />
               <BoxItemText>{item.title}</BoxItemText>
-              <TouchableOpacity onPress={() => handleNaminate(item)}>
+              <TouchableOpacity onPress={() => handleNominate(item)}>
                 <Nominate item={item} />
               </TouchableOpacity>
             </Card>
