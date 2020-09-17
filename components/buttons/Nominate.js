@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 // Styles
 import { View, Text } from "native-base";
 import { TouchableOpacity } from "react-native";
 
-const Nominate = () => {
-  const handleVote = () => {
-    alert("you nominated a movie!");
-  };
+const Nominate = ({ item }) => {
   return (
     <View>
-      <TouchableOpacity onPress={handleVote}>
+      <TouchableOpacity>
         <Text>Nominate</Text>
       </TouchableOpacity>
     </View>
