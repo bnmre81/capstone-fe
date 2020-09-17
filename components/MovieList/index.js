@@ -8,35 +8,39 @@ import { FlatList, ScrollView } from "react-native";
 import movieStore from "../../stores/MovieStore";
 // Components
 import Nominate from "../buttons/Nominate";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const MovieList = () => {
+const MovieList = ({ Navigation }) => {
   if (!movieStore.movies) return <Spinner />;
 
   const { movies } = movieStore;
 
-  /* remove commented code */
-  // const randomMovies = [];
-  // if (movies)
-  //   for (let i = 0; i < 5; i++) {
-  //     randomMovies.push(movies[Math.random() * (movies.length - 0)]);
-  //   }
+  const naminatedMovies = [];
+
+  const handleNaminate = (item) => {
+    naminatedMovies.push(item.title);
+    console.log(naminatedMovies);
+  };
   return (
     <BoxListContainer>
       <FlatList
         keyExtractor={(item) => item.id}
         data={movies}
         renderItem={({ item }) => {
-          // no need for Fragments
           return (
             <Card>
-              <Text>FILM</Text>
+              <TouchableOpacity>
+                <Text>FILM</Text>
+              </TouchableOpacity>
               <Thumbnail
                 source={{
                   uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
                 }}
               />
               <BoxItemText>{item.title}</BoxItemText>
-              <Nominate />
+              <TouchableOpacity onPress={() => handleNaminate(item)}>
+                <Nominate item={item} />
+              </TouchableOpacity>
             </Card>
           );
         }}
