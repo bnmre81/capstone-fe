@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { View, Image, Text } from "native-base";  // unused imports
 
 export const BoxItemContainer = styled.View`
   width: 50%;
@@ -16,4 +15,13 @@ export const BoxItemImage = styled.Image`
 export const BoxItemText = styled.Text`
   color: black;
   font-weight: bold;
+`;
+
+export const BoxListContainer = styled.View`
+  flex: 1;
+  width: 100%;
+  height: 85%;
+  padding: 5px;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
