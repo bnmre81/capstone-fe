@@ -1,7 +1,19 @@
 import React from "react";
-import { View } from "native-base";
+
+import { View, Text } from "native-base";
+import { TouchableOpacity } from "react-native";
+import { StartSessionBtn } from "./styles";
 
 const StartSession = () => {
-  return <View></View>;
+  const handleVote = () => {
+    alert("Session started!");
+  };
+  return (
+    <View>
+      <StartSessionBtn onPress={handleVote}>
+        <Text>Start Session</Text>
+      </StartSessionBtn>
+    </View>
+  );
 };
 export default StartSession;
