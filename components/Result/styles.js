@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Thumbnail } from "native-base";
+import { TouchableOpacity } from "react-native-gesture-handler"; // remove
+import { Thumbnail } from "native-base"; // remove
 
 export const ResultContainer = styled.View`
   flex: 1;

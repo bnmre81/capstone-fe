@@ -22,7 +22,7 @@ const MovieList = ({ navigation }) => {
 
   const handleNominate = (item) => {
     nominatedMovies.push(item);
-    console.log(nominatedMovies);
+    console.log(nominatedMovies); // remove
   };
   return (
     <BoxListContainer>

@@ -43,6 +43,8 @@ const Result = ({ route, navigation }) => {
                     he doesn't know that they know, and at the end you'll see
                     that he knows that they know, and they know that he knows
                     that they know!
+
+                    Ah yes! The messers, become the messees!
                   </DetailText>
                 </TextBackground>
               </TextContainer>
