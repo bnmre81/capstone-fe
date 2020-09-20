@@ -1,16 +1,19 @@
 import React from "react";
 import { observer } from "mobx-react";
+
 // styles
 import { BoxListContainer, BoxItemText } from "./itemStyles";
 import { Text, Card, Spinner, Thumbnail } from "native-base";
-import { FlatList, ScrollView } from "react-native";
-// Stores
-import movieStore from "../../stores/MovieStore";
-// Components
-import Nominate from "../buttons/Nominate";
+import { FlatList } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const MovieList = ({ Navigation }) => {
+// Stores
+import movieStore from "../../stores/MovieStore";
+
+// Components
+import Nominate from "../buttons/Nominate";
+
+const MovieList = ({ navigation }) => {
   if (!movieStore.movies) return <Spinner />;
 
   const { movies } = movieStore;
@@ -23,7 +26,7 @@ const MovieList = ({ Navigation }) => {
   return (
     <BoxListContainer>
       <FlatList
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         data={movies}
         renderItem={({ item }) => {
           return (
@@ -44,6 +47,15 @@ const MovieList = ({ Navigation }) => {
           );
         }}
       />
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("NominatedList", {
+            nominatedMovies,
+          })
+        }
+      >
+        <Text>Submit</Text>
+      </TouchableOpacity>
     </BoxListContainer>
   );
 };
