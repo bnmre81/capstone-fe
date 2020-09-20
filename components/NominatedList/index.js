@@ -1,21 +1,23 @@
 import React from "react";
-import { View, Text } from "native-base";
+
+// Styles
+import { Text, Card, Thumbnail } from "native-base";
 import { BoxListContainer } from "./styles";
 import { FlatList } from "react-native";
+import { BoxItemText } from "../MovieList/itemStyles";
 
-const NominatedList = () => {
+const NominatedList = ({ route }) => {
+  const { nominatedMovies } = route.params;
+
   return (
     <BoxListContainer>
-      <Text>Nominated list</Text>
       <FlatList
-        keyExtractor={(item) => item.id}
-        data={movies}
+        keyExtractor={(item) => item.id.toString()}
+        data={nominatedMovies}
         renderItem={({ item }) => {
           return (
             <Card>
-              <TouchableOpacity>
-                <Text>FILM</Text>
-              </TouchableOpacity>
+              <Text>FILM</Text>
               <Thumbnail
                 source={{
                   uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
