@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text } from "native-base";
-import StartSession from "../buttons/StartSession";
 import JoinSession from "../buttons/JoinSession";
 import { HomeContainer } from "./styles";
+import StartSession from "../Modals/StartSession";
 
 const Home = () => {
   return (

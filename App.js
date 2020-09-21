@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 
@@ -23,5 +22,4 @@ export default function App() {
       <MainStack />
     </ThemeProvider>
   );
-
 }

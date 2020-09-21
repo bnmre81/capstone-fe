@@ -7,20 +7,21 @@ import {
   AuthTextInput,
   AuthButton,
   AuthButtonText,
-  JoinSessionBtn,
+  AuthOther,
+  StartSessionBtn,
 } from "./styles";
 import { Text } from "native-base";
 import { View, Modal } from "react-native";
 import { TouchableOpacity } from "react-native";
 
-const JoinSession = () => {
+const StartSession = () => {
   //Modal State
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
 
   //User State
-  const [user, setUser] = useState("Username");
+  const [username, setUsername] = useState("Username");
   //Room State
   const [room, setRoom] = useState("Room Name");
 
@@ -29,10 +30,10 @@ const JoinSession = () => {
     <View>
       <Modal animationType="slide" transparent={true} visible={isOpen}>
         <AuthContainer>
-          <AuthTitle>Join</AuthTitle>
+          <AuthTitle>Host</AuthTitle>
           <AuthTextInput
-            onChangeText={(username) => setUser(username)}
-            placeholder="User"
+            onChangeText={(username) => setUsername(username)}
+            placeholder="Username"
             autoCapitalize="none"
             placeholderTextColor="#A6AEC1"
           />
@@ -43,17 +44,18 @@ const JoinSession = () => {
           />
 
           <AuthButton onPress={() => openModal()}>
-            <AuthButtonText>Join Session</AuthButtonText>
+            <AuthButtonText>Start Session</AuthButtonText>
           </AuthButton>
           <TouchableOpacity onPress={() => closeModal()}>
             <Text style={{ marginTop: 20, color: "#bbe1fa" }}>Cancel</Text>
           </TouchableOpacity>
         </AuthContainer>
       </Modal>
-      <JoinSessionBtn onPress={() => openModal()}>
-        <Text>Join Session</Text>
-      </JoinSessionBtn>
+      <StartSessionBtn onPress={() => openModal()}>
+        <Text>Start Session</Text>
+      </StartSessionBtn>
     </View>
   );
 };
-export default JoinSession;
+
+export default StartSession;
