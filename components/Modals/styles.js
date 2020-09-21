@@ -1,27 +1,5 @@
 import styled from "styled-components/native";
 
-export const JoinSessionBtn = styled.TouchableOpacity`
-  background-color: ${(props) => props.theme.secondary};
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  border-color: ${(props) => props.theme.accent};
-  position: absolute;
-  top: 300px;
-  left: 25%;
-`;
-
-export const StartSessionBtn = styled.TouchableOpacity`
-  background-color: ${(props) => props.theme.secondary};
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  border-color: ${(props) => props.theme.accent};
-  position: absolute;
-  top: 425px;
-  left: 25%;
-`;
-
 export const AuthContainer = styled.View`
   flex: 1;
   align-self: stretch;
@@ -61,4 +39,19 @@ export const AuthButtonText = styled.Text`
   color: #222831;
   font-weight: bold;
   font-size: 18px;
+`;
+export const AuthOther = styled.Text`
+  color: #bbe1fa;
+  margin-top: 15px;
+`;
+
+export const StartSessionBtn = styled.TouchableOpacity`
+  background-color: ${(props) => props.theme.secondary};
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border-color: ${(props) => props.theme.accent};
+  position: absolute;
+  top: 425px;
+  left: 25%;
 `;

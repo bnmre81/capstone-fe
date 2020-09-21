@@ -10,7 +10,7 @@ const StartSession = () => {
   };
   return (
     <View>
-      <StartSessionBtn onPress={handleVote}>
+      <StartSessionBtn>
         <Text>Start Session</Text>
       </StartSessionBtn>
     </View>
