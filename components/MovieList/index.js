@@ -12,16 +12,16 @@ import movieStore from "../../stores/MovieStore";
 
 // Components
 import Nominate from "../buttons/Nominate";
+import socketStore from "../../stores/SocketStore";
 
 const MovieList = ({ navigation }) => {
   if (!movieStore.movies) return <Spinner />;
 
   const { movies } = movieStore;
 
-  const nominatedMovies = [];
-
   const handleNominate = (item) => {
-    nominatedMovies.push(item);
+    socketStore.nominate(item);
+    navigation.replace("NominatedList");
   };
   return (
     <BoxListContainer>
@@ -47,15 +47,6 @@ const MovieList = ({ navigation }) => {
           );
         }}
       />
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("NominatedList", {
-            nominatedMovies,
-          })
-        }
-      >
-        <Text>Submit</Text>
-      </TouchableOpacity>
     </BoxListContainer>
   );
 };

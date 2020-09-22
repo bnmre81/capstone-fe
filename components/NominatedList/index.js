@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 // Styles
 import { Text, Card, Thumbnail } from "native-base";
@@ -6,14 +7,15 @@ import { BoxListContainer } from "./styles";
 import { FlatList } from "react-native";
 import { BoxItemText } from "../MovieList/itemStyles";
 
-const NominatedList = ({ route }) => {
-  const { nominatedMovies } = route.params;
+// Stores
+import socketStore from "../../stores/SocketStore";
 
+const NominatedList = () => {
   return (
     <BoxListContainer>
       <FlatList
         keyExtractor={(item) => item.id.toString()}
-        data={nominatedMovies}
+        data={socketStore.nominatedMovies}
         renderItem={({ item }) => {
           return (
             <Card>
@@ -32,4 +34,4 @@ const NominatedList = ({ route }) => {
   );
 };
 
-export default NominatedList;
+export default observer(NominatedList);
