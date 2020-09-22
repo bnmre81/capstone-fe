@@ -17,7 +17,7 @@ const NominatedList = ({ route }) => {
         renderItem={({ item }) => {
           return (
             <Card>
-              <Text>FILM</Text>
+              <Text>Nominated</Text>
               <Thumbnail
                 source={{
                   uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,

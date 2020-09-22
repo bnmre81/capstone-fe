@@ -7,7 +7,7 @@ import StartSession from "../Modals/StartSession";
 const Home = () => {
   return (
     <HomeContainer>
-      <Text>Welcome home1</Text>
+      <Text>Welcome home!</Text>
       <StartSession />
       <JoinSession />
     </HomeContainer>
