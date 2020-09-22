@@ -16,6 +16,7 @@ import { TouchableOpacity } from "react-native";
 
 // Stores
 import socketStore from "../../stores/SocketStore";
+import { useNavigation } from "@react-navigation/native";
 
 const StartSession = () => {
   //Modal State
@@ -31,9 +32,12 @@ const StartSession = () => {
   //Room State
   const [room, setRoom] = useState("Room Name");
 
+  const navigation = useNavigation();
+
   const handleSubmit = () => {
     socketStore.hostRoom({ room, user });
     closeModal();
+    navigation.replace("MovieList");
   };
   //Render
   return (
