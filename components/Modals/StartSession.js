@@ -14,17 +14,27 @@ import { Text } from "native-base";
 import { View, Modal } from "react-native";
 import { TouchableOpacity } from "react-native";
 
+// Stores
+import socketStore from "../../stores/SocketStore";
+
 const StartSession = () => {
   //Modal State
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
+  const openModal = () => {
+    socketStore.connect();
+    setIsOpen(true);
+  };
 
   //User State
-  const [username, setUsername] = useState("Username");
+  const [user, setUser] = useState("User");
   //Room State
   const [room, setRoom] = useState("Room Name");
 
+  const handleSubmit = () => {
+    socketStore.hostRoom({ room, user });
+    closeModal();
+  };
   //Render
   return (
     <View>
@@ -32,7 +42,7 @@ const StartSession = () => {
         <AuthContainer>
           <AuthTitle>Host</AuthTitle>
           <AuthTextInput
-            onChangeText={(username) => setUsername(username)}
+            onChangeText={(user) => setUser(user)}
             placeholder="Username"
             autoCapitalize="none"
             placeholderTextColor="#A6AEC1"
@@ -43,7 +53,7 @@ const StartSession = () => {
             placeholderTextColor="#A6AEC1"
           />
 
-          <AuthButton onPress={() => openModal()}>
+          <AuthButton onPress={() => handleSubmit()}>
             <AuthButtonText>Start Session</AuthButtonText>
           </AuthButton>
           <TouchableOpacity onPress={() => closeModal()}>
