@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import socketStore from "../../stores/SocketStore";
 // Styles
 import {
   AuthContainer,
@@ -18,14 +18,23 @@ const JoinSession = () => {
   //Modal State
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
-  const openModal = () => setIsOpen(true);
+  const openModal = () => {
+    socketStore.connect();
+    setIsOpen(true);
+  };
+
+  //User State
+  const [user, setUser] = useState("User");
+  //Room State
+  const [room, setRoom] = useState("Room Name");
 
   const navigation = useNavigation();
 
-  //User State
-  const [user, setUser] = useState("Username");
-  //Room State
-  const [room, setRoom] = useState("Room Name");
+  const handleSubmit = () => {
+    socketStore.hostRoom({ room, user });
+    closeModal();
+    navigation.replace("MovieList");
+  };
 
   //Render
   return (
@@ -42,10 +51,11 @@ const JoinSession = () => {
           <AuthTextInput
             onChangeText={(roomName) => setRoom(roomName)}
             placeholder="Room Name"
+            autoCapitalize="none"
             placeholderTextColor="#A6AEC1"
           />
 
-          <AuthButton onPress={() => navigation.replace("MovieList")}>
+          <AuthButton onPress={() => handleSubmit()}>
             <AuthButtonText>Join Session</AuthButtonText>
           </AuthButton>
           <TouchableOpacity onPress={() => closeModal()}>
