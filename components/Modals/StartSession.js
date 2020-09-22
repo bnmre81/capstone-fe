@@ -18,6 +18,9 @@ import { TouchableOpacity } from "react-native";
 import socketStore from "../../stores/SocketStore";
 import { useNavigation } from "@react-navigation/native";
 
+// REVIEW: cleanup your imports
+// REVIEW: isnt this component repeated?
+
 const StartSession = () => {
   //Modal State
   const [isOpen, setIsOpen] = useState(false);

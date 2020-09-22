@@ -29,6 +29,7 @@ const MovieList = ({ navigation }) => {
         keyExtractor={(item) => item.id.toString()}
         data={movies}
         renderItem={({ item }) => {
+          // REVIEW: this should be in its own component
           return (
             <Card>
               <TouchableOpacity>

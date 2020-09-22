@@ -4,6 +4,8 @@ import MovieList from "../MovieList";
 import NominatedList from "../NominatedList";
 import Result from "../Result/index";
 import Home from "../Home";
+// REVIEW: no need to add index
+
 // Stores
 import socketStore from "../../stores/SocketStore";
 // Navigators
@@ -26,6 +28,7 @@ const MainStack = () => {
         <Stack.Screen
           name="MovieList"
           component={MovieList}
+          // REVIEW: `socketStore.room` is a variable, no need for عصفورة syntax
           options={{ title: `${socketStore.room}` }}
         />
         <Stack.Screen name="NominatedList" component={NominatedList} />
