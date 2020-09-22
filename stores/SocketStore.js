@@ -18,6 +18,10 @@ class SocketStore {
     this.socket.emit("join_room", { room, user });
     this.room = room;
   };
+
+  nominate = ({ movie }) => {
+    this.socket.emit("message", { room, movie });
+  };
 }
 
 decorate(SocketStore, {
