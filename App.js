@@ -11,6 +11,12 @@ const theme = {
 };
 
 export default function App() {
+
+  useEffect(() => {
+    const socket = io("http://188.236.133.201:8000/");
+  });
+
+
   return (
     <ThemeProvider theme={theme}>
       <MainStack />

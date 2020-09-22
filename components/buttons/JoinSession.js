@@ -12,12 +12,15 @@ import {
 import { Text } from "native-base";
 import { View, Modal } from "react-native";
 import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const JoinSession = () => {
   //Modal State
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
+
+  const navigation = useNavigation();
 
   //User State
   const [user, setUser] = useState("Username");
@@ -42,7 +45,7 @@ const JoinSession = () => {
             placeholderTextColor="#A6AEC1"
           />
 
-          <AuthButton onPress={() => openModal()}>
+          <AuthButton onPress={() => navigation.replace("MovieList")}>
             <AuthButtonText>Join Session</AuthButtonText>
           </AuthButton>
           <TouchableOpacity onPress={() => closeModal()}>
