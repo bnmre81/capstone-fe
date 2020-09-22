@@ -8,7 +8,11 @@ class SocketStore {
   room = null;
 
   connect = () => {
-    this.socket = io("http://10.0.2.2:8000/");
+    //BE testing IP
+    // this.socket = io("http://10.0.2.2:8000/");
+
+    //heroku BE
+    this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
     this.socket.on("message", ({ room, movie }) => {
       this.nominatedMovies = [...this.nominatedMovies, movie];
     });
@@ -19,7 +23,8 @@ class SocketStore {
     this.room = room;
   };
 
-  nominate = ({ movie }) => {
+  nominate = (movie) => {
+    const room = this.room;
     this.socket.emit("message", { room, movie });
   };
 }
