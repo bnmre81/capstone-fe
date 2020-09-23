@@ -31,7 +31,11 @@ const MainStack = () => {
           options={{ title: socketStore.room }}
         />
         <Stack.Screen name="NominatedList" component={NominatedList} />
-        <Stack.Screen name="Result" component={Result} />
+        <Stack.Screen
+          name="Result"
+          component={Result}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

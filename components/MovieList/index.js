@@ -22,7 +22,7 @@ const MovieList = ({ navigation }) => {
 
   const handleNominate = (item) => {
     socketStore.nominate(item);
-    navigation.replace("NominatedList");
+    navigation.navigate("NominatedList");
   };
   return (
     <BoxListContainer>
