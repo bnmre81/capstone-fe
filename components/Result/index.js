@@ -15,6 +15,7 @@ import {
   DetailText,
   Back,
 } from "./styles";
+// REVIEW: cleanup your imports
 
 const Result = ({ route, navigation }) => {
   return (
