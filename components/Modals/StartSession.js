@@ -7,7 +7,6 @@ import {
   AuthTextInput,
   AuthButton,
   AuthButtonText,
-  AuthOther,
   StartSessionBtn,
 } from "./styles";
 import { Text } from "native-base";
@@ -17,9 +16,6 @@ import { TouchableOpacity } from "react-native";
 // Stores
 import socketStore from "../../stores/SocketStore";
 import { useNavigation } from "@react-navigation/native";
-
-// REVIEW: cleanup your imports
-// REVIEW: isnt this component repeated?
 
 const StartSession = () => {
   //Modal State

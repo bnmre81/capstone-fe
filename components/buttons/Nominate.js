@@ -3,7 +3,6 @@ import React from "react";
 import { View, Text } from "native-base";
 import { TouchableOpacity } from "react-native";
 
-// REVIEW: if youre not using item, remove it
 const Nominate = ({ item }) => {
   return (
     <View>
