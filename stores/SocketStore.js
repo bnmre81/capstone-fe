@@ -6,15 +6,32 @@ class SocketStore {
   socket = null;
   nominatedMovies = [];
   room = null;
+  result = null;
 
   connect = () => {
     //BE testing IP
-    // this.socket = io("http://10.0.2.2:8000/");
+    this.socket = io("http://10.0.2.2:8000/");
 
     //heroku BE
-    this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
-    this.socket.on("message", ({ room, movie }) => {
-      this.nominatedMovies = [...this.nominatedMovies, movie];
+    // this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
+    this.socket.on("nominate", ({ room, movie }) => {
+      this.nominatedMovies = [
+        ...this.nominatedMovies,
+        {
+          id: movie.id,
+          title: movie.title,
+          poster_path: movie.poster_path,
+          count: 0,
+        },
+      ];
+    });
+    // recieve Votes
+    this.socket.on("vote", ({ room, movieId }) => {
+      this.nominatedMovies.forEach((nominated) => {
+        if (nominated.id === movieId) {
+          nominated.count++;
+        }
+      });
     });
   };
 
@@ -25,9 +42,23 @@ class SocketStore {
 
   nominate = (movie) => {
     const room = this.room;
-    this.socket.emit("message", { room, movie });
+    this.socket.emit("nominate", { room, movie });
   };
 }
+
+vote = ({ room, movieId }) => {
+  this.socket.emit("vote", { room, movieId });
+};
+
+highestVote = () => {
+  this.result = Math.max.apply(
+    Math,
+    nominatedList.map((value) => {
+      return value.cout;
+    })
+  );
+  console.log(this.result);
+};
 
 decorate(SocketStore, {
   socket: observable,

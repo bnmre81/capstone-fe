@@ -7,7 +7,6 @@ import {
   AuthTextInput,
   AuthButton,
   AuthButtonText,
-  AuthOther,
   StartSessionBtn,
 } from "./styles";
 import { Text } from "native-base";

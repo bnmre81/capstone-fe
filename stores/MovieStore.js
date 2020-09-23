@@ -5,6 +5,8 @@ class MovieStore {
 
   fetchTrendingMovies = () => {
     // don't use fetch, use axios with async/await instead.
+    // REVIEW: Replace .then with async await
+    // REVIEW: Add a loading
     fetch(
       `https://api.themoviedb.org/3/trending/movie/day?api_key=a6358e507fbfbbc6c17a38f10a736e3f`
     )

@@ -10,8 +10,7 @@ import {
   JoinSessionBtn,
 } from "./styles";
 import { Text } from "native-base";
-import { View, Modal } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View, Modal } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const JoinSession = () => {
@@ -54,16 +53,15 @@ const JoinSession = () => {
             autoCapitalize="none"
             placeholderTextColor="#A6AEC1"
           />
-
-          <AuthButton onPress={() => handleSubmit()}>
+          <AuthButton onPress={handleSubmit}>
             <AuthButtonText>Join Session</AuthButtonText>
           </AuthButton>
-          <TouchableOpacity onPress={() => closeModal()}>
+          <TouchableOpacity onPress={closeModal}>
             <Text style={{ marginTop: 20, color: "#bbe1fa" }}>Cancel</Text>
           </TouchableOpacity>
         </AuthContainer>
       </Modal>
-      <JoinSessionBtn onPress={() => openModal()}>
+      <JoinSessionBtn onPress={openModal}>
         <Text>Join Session</Text>
       </JoinSessionBtn>
     </View>

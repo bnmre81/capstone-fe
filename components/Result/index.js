@@ -1,5 +1,7 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "native-base";
+
+// Styles
+import { Text } from "native-base";
 import { ScrollView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,15 +18,19 @@ import {
   Back,
 } from "./styles";
 
-const Result = ({ route, navigation }) => {
+// Stores
+import socketStore from "../../stores/SocketStore";
+
+const result = socketStore.result;
+
+const Result = ({ navigation }) => {
   return (
     <ResultContainer>
       <ScrollView>
         <StatusBar barStyle="light-Content" />
         <ResultBackground
           source={{
-            uri:
-              "https://i.pinimg.com/originals/91/8a/91/918a91cac2905bc0ff1e0442325044bf.jpg",
+            uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
           }}
         >
           <SafeAreaView>
@@ -37,7 +43,7 @@ const Result = ({ route, navigation }) => {
             <MainStyle>
               <TextContainer>
                 <TextBackground>
-                  <TitleText>Summary</TitleText>
+                  <TitleText>{result.title}</TitleText>
                   <DetailText>
                     This movie is about a guy who is trying the impossible, but
                     he doesn't know that they know, and at the end you'll see
