@@ -1,7 +1,7 @@
 import React from "react";
 
 // Styles
-import { Text } from "native-base";
+import { Spinner, Text } from "native-base";
 import { ScrollView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -20,17 +20,19 @@ import {
 
 // Stores
 import socketStore from "../../stores/SocketStore";
-
-const result = socketStore.result;
+import { observer } from "mobx-react";
 
 const Result = ({ navigation }) => {
+  const result = socketStore.result;
+  if (!result) return <Spinner />;
+
   return (
     <ResultContainer>
       <ScrollView>
         <StatusBar barStyle="light-Content" />
         <ResultBackground
           source={{
-            uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+            uri: `https://image.tmdb.org/t/p/w500${result.poster_path}`,
           }}
         >
           <SafeAreaView>
@@ -59,4 +61,4 @@ const Result = ({ navigation }) => {
     </ResultContainer>
   );
 };
-export default Result;
+export default observer(Result);

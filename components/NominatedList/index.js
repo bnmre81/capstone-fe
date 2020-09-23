@@ -15,17 +15,22 @@ import {
 import { BoxListContainer } from "./styles";
 import { FlatList } from "react-native";
 import { BoxItemText } from "../MovieList/itemStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 // Stores
 import socketStore from "../../stores/SocketStore";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
-const NominatedList = () => {
-  const handleUp = () => {
-    return alert("up vote");
+const NominatedList = ({ navigation }) => {
+  const handleUp = (movie) => {
+    socketStore.vote(movie.id);
   };
   const handleDown = () => {
     return alert("Down vote");
+  };
+
+  const showResult = () => {
+    socketStore.highestVote();
+    navigation.navigate("Result");
   };
   return (
     <BoxListContainer>
@@ -45,7 +50,7 @@ const NominatedList = () => {
               <Body>
                 <BoxItemText>{item.title}</BoxItemText>
               </Body>
-              <TouchableOpacity onPress={handleUp}>
+              <TouchableOpacity onPress={() => handleUp(item)}>
                 <Icon name="thumbs-down" size={30} />
               </TouchableOpacity>
               <TouchableOpacity onPress={handleDown}>
@@ -55,6 +60,9 @@ const NominatedList = () => {
           );
         }}
       />
+      <TouchableOpacity onPress={showResult}>
+        <Icon name="airplay" size={30} sytle={{ margin: 150 }} />
+      </TouchableOpacity>
     </BoxListContainer>
   );
 };

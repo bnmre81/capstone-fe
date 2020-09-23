@@ -25,6 +25,7 @@ class SocketStore {
         },
       ];
     });
+
     // recieve Votes
     this.socket.on("vote", ({ room, movieId }) => {
       this.nominatedMovies.forEach((nominated) => {
@@ -44,26 +45,28 @@ class SocketStore {
     const room = this.room;
     this.socket.emit("nominate", { room, movie });
   };
+  vote = (movieId) => {
+    const room = this.room;
+    this.socket.emit("vote", { room, movieId });
+  };
+
+  highestVote = () => {
+    console.log(this.nominatedMovies);
+    this.result = Math.max.apply(
+      Math,
+      this.nominatedMovies.map((value) => {
+        return value.cout;
+      })
+    );
+    // console.log(this.result);
+  };
 }
-
-vote = ({ room, movieId }) => {
-  this.socket.emit("vote", { room, movieId });
-};
-
-highestVote = () => {
-  this.result = Math.max.apply(
-    Math,
-    nominatedList.map((value) => {
-      return value.cout;
-    })
-  );
-  console.log(this.result);
-};
 
 decorate(SocketStore, {
   socket: observable,
   room: observable,
   nominatedMovies: observable,
+  result: observable,
 });
 
 const socketStore = new SocketStore();
