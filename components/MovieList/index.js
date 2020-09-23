@@ -11,6 +11,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import movieStore from "../../stores/MovieStore";
 
 // Components
+import MovieItem from "./MovieItem";
 import Nominate from "../buttons/Nominate";
 import socketStore from "../../stores/SocketStore";
 
@@ -29,23 +30,7 @@ const MovieList = ({ navigation }) => {
         keyExtractor={(item) => item.id.toString()}
         data={movies}
         renderItem={({ item }) => {
-          // REVIEW: this should be in its own component
-          return (
-            <Card>
-              <TouchableOpacity>
-                <Text>FILM</Text>
-              </TouchableOpacity>
-              <Thumbnail
-                source={{
-                  uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
-                }}
-              />
-              <BoxItemText>{item.title}</BoxItemText>
-              <TouchableOpacity onPress={() => handleNominate(item)}>
-                <Nominate item={item} />
-              </TouchableOpacity>
-            </Card>
-          );
+          return <MovieItem item={item} handleNominate={handleNominate} />;
         }}
       />
     </BoxListContainer>
