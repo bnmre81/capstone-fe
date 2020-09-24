@@ -10,10 +10,10 @@ class SocketStore {
 
   connect = () => {
     //BE testing IP
-    this.socket = io("http://10.0.2.2:8000/");
+    // this.socket = io("http://10.0.2.2:8000/");
 
     //heroku BE
-    // this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
+    this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
     this.socket.on("nominate", ({ room, movie }) => {
       this.nominatedMovies = [
         ...this.nominatedMovies,
@@ -51,14 +51,10 @@ class SocketStore {
   };
 
   highestVote = () => {
-    console.log(this.nominatedMovies);
-    this.result = Math.max.apply(
-      Math,
-      this.nominatedMovies.map((value) => {
-        return value.cout;
-      })
-    );
-    // console.log(this.result);
+    const sorted = this.nominatedMovies.sort(function (a, b) {
+      return b.count - a.count;
+    });
+    this.result = sorted[0];
   };
 }
 

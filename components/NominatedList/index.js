@@ -2,16 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import Icon from "react-native-vector-icons/Feather";
 // Styles
-import {
-  Text,
-  Card,
-  Thumbnail,
-  Body,
-  CardItem,
-  ListItem,
-  Left,
-  View,
-} from "native-base";
+import { Thumbnail, Body, ListItem, Left } from "native-base";
 import { BoxListContainer } from "./styles";
 import { FlatList } from "react-native";
 import { BoxItemText } from "../MovieList/itemStyles";
@@ -50,10 +41,10 @@ const NominatedList = ({ navigation }) => {
               <Body>
                 <BoxItemText>{item.title}</BoxItemText>
               </Body>
-              <TouchableOpacity onPress={() => handleUp(item)}>
+              <TouchableOpacity onPress={handleDown}>
                 <Icon name="thumbs-down" size={30} />
               </TouchableOpacity>
-              <TouchableOpacity onPress={handleDown}>
+              <TouchableOpacity onPress={() => handleUp(item)}>
                 <Icon name="thumbs-up" size={30} sytle={{ margin: 150 }} />
               </TouchableOpacity>
             </ListItem>
