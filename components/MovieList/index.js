@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 
 // styles
 import { BoxListContainer, BoxItemText } from "./itemStyles";
-import { Text, Card, Spinner, Thumbnail } from "native-base";
+import { Text, Card, Spinner, Thumbnail, View } from "native-base";
 import { FlatList } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -25,15 +25,20 @@ const MovieList = ({ navigation }) => {
     navigation.navigate("NominatedList");
   };
   return (
-    <BoxListContainer>
-      <FlatList
-        keyExtractor={(item) => item.id.toString()}
-        data={movies}
-        renderItem={({ item }) => {
-          return <MovieItem item={item} handleNominate={handleNominate} />;
-        }}
-      />
+    <BoxListContainer style={{ backgroundColor: "#222" }}>
+      <MovieItem handleNominate={handleNominate} movies={movies} />
     </BoxListContainer>
   );
 };
 export default observer(MovieList);
+
+{
+  /* <FlatList
+  horizontal
+  keyExtractor={(item) => item.id.toString()}
+  data={movies}
+  renderItem={({ item }) => {
+    return <MovieItem item={item} handleNominate={handleNominate} />;
+  }}
+/> */
+}
