@@ -1,70 +1,86 @@
 import React from "react";
+import movieStore from "../../stores/MovieStore";
 import { observer } from "mobx-react";
-import Icon from "react-native-vector-icons/Feather";
 // Styles
-import {
-  Text,
-  Card,
-  Thumbnail,
-  Body,
-  CardItem,
-  ListItem,
-  Left,
-  View,
-} from "native-base";
-import { BoxListContainer } from "./styles";
-import { FlatList } from "react-native";
-import { BoxItemText } from "../MovieList/itemStyles";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { CarouselContainerView, CaruselText, CaruselImage } from "./styles";
+import { Text, View } from "react-native";
+import Carousel from "react-native-anchor-carousel";
 
 // Stores
 import socketStore from "../../stores/SocketStore";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { setStatusBarBackgroundColor } from "expo-status-bar";
 
 const NominatedList = ({ navigation }) => {
   const handleUp = (movie) => {
     socketStore.vote(movie.id);
-  };
-  const handleDown = () => {
-    return alert("Down vote");
   };
 
   const showResult = () => {
     socketStore.highestVote();
     navigation.navigate("Result");
   };
+
   return (
-    <BoxListContainer>
-      <FlatList
-        keyExtractor={(item) => item.id.toString()}
-        data={socketStore.nominatedMovies}
+    <CarouselContainerView style={{ height: 600 }}>
+      <Carousel
+        sytle={{
+          flex: 1,
+          owverflow: "visible",
+        }}
+        data={movieStore.movies}
         renderItem={({ item }) => {
           return (
-            <ListItem avatar>
-              <Left>
-                <Thumbnail
+            <View>
+              <TouchableOpacity>
+                <CaruselImage
                   source={{
                     uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
                   }}
                 />
-              </Left>
-              <Body>
-                <BoxItemText>{item.title}</BoxItemText>
-              </Body>
-              <TouchableOpacity onPress={() => handleUp(item)}>
-                <Icon name="thumbs-down" size={30} />
+                <CaruselText>{item.title}</CaruselText>
               </TouchableOpacity>
-              <TouchableOpacity onPress={handleDown}>
-                <Icon name="thumbs-up" size={30} sytle={{ margin: 150 }} />
-              </TouchableOpacity>
-            </ListItem>
+            </View>
           );
         }}
+        itemWidth={200}
+        seperationWidth={0}
+        inActiveOpacity={0.4}
       />
-      <TouchableOpacity onPress={showResult}>
-        <Icon name="airplay" size={30} sytle={{ margin: 150 }} />
-      </TouchableOpacity>
-    </BoxListContainer>
+    </CarouselContainerView>
   );
 };
 
 export default observer(NominatedList);
+
+// <BoxListContainer>
+//   <FlatList
+//     keyExtractor={(item) => item.id.toString()}
+//     data={movieStore.movies}
+//     renderItem={({ item }) => {
+//       return (
+//         <ListItem avatar>
+//           <Left>
+//             <Thumbnail
+//               source={{
+//                 uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+//               }}
+//             />
+//           </Left>
+//           <Body>
+//             <BoxItemText>{item.title}</BoxItemText>
+//           </Body>
+//           <TouchableOpacity onPress={() => handleUp(item)}>
+//             <Icon name="thumbs-down" size={30} />
+//           </TouchableOpacity>
+//           <TouchableOpacity onPress={handleDown}>
+//             <Icon name="thumbs-up" size={30} sytle={{ margin: 150 }} />
+//           </TouchableOpacity>
+//         </ListItem>
+//       );
+//     }}
+//   />
+//   <TouchableOpacity onPress={showResult}>
+//     <Icon name="airplay" size={30} sytle={{ margin: 150 }} />
+//   </TouchableOpacity>
+// </BoxListContainer>
