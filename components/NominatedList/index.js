@@ -9,7 +9,6 @@ import Carousel from "react-native-anchor-carousel";
 // Stores
 import socketStore from "../../stores/SocketStore";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { setStatusBarBackgroundColor } from "expo-status-bar";
 
 const NominatedList = ({ navigation }) => {
   const handleUp = (movie) => {
@@ -28,7 +27,7 @@ const NominatedList = ({ navigation }) => {
           flex: 1,
           owverflow: "visible",
         }}
-        data={movieStore.movies}
+        data={socketStore.nominatedMovies}
         renderItem={({ item }) => {
           return (
             <View>

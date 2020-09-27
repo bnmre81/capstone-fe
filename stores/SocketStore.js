@@ -10,10 +10,10 @@ class SocketStore {
 
   connect = () => {
     //BE testing IP
-    this.socket = io("http://10.0.2.2:8000/");
+    // this.socket = io("http://10.0.2.2:8000/");
 
     //heroku BE
-    // this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
+    this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
     this.socket.on("nominate", ({ room, movie }) => {
       this.nominatedMovies = [
         ...this.nominatedMovies,
