@@ -18,7 +18,7 @@ const Stack = createStackNavigator();
 const MainStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="NominatedList">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={Home}
@@ -28,7 +28,7 @@ const MainStack = () => {
         <Stack.Screen
           name="MovieList"
           component={MovieList}
-          options={{ title: socketStore.room }}
+          options={{ title: socketStore.room, headerShown: false }}
         />
         <Stack.Screen name="NominatedList" component={NominatedList} />
         <Stack.Screen

@@ -2,6 +2,19 @@ import { decorate, observable } from "mobx";
 
 class MovieStore {
   movies = [];
+  randomMoviesList = [];
+
+  fetchRandomList = () => {
+    result = [];
+    for (let i = 0; i < 10; i++) {
+      result.push(Math.floor(Math.random() * this.movies.length));
+    }
+
+    console.log("these mvoeis", this.movies);
+    result.forEach((element) => {
+      this.randomMoviesList.push(this.movies[element]);
+    });
+  };
 
   fetchTrendingMovies = () => {
     // don't use fetch, use axios with async/await instead.
@@ -13,6 +26,7 @@ class MovieStore {
       .then((data) => data.json())
       .then((data) => {
         this.movies = data.results;
+        this.fetchRandomList();
       });
   };
 }
@@ -22,6 +36,7 @@ class MovieStore {
 
 decorate(MovieStore, {
   movies: observable,
+  randomMoviesList: observable,
 });
 
 const movieStore = new MovieStore();
