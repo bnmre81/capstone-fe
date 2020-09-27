@@ -7,6 +7,7 @@ class SocketStore {
   nominatedMovies = [];
   room = null;
   result = null;
+  start = false;
 
   connect = () => {
     //BE testing IP
@@ -34,11 +35,21 @@ class SocketStore {
         }
       });
     });
+
+    // Start Process
+    this.socket.on("start", ({ room }) => {
+      this.start = true;
+    });
   };
 
   hostRoom = ({ room, user }) => {
     this.socket.emit("join_room", { room, user });
     this.room = room;
+  };
+
+  startNomination = () => {
+    const room = this.room;
+    this.socket.emit("start", { room });
   };
 
   nominate = (movie) => {
@@ -51,14 +62,12 @@ class SocketStore {
   };
 
   highestVote = () => {
-    console.log(this.nominatedMovies);
     this.result = Math.max.apply(
       Math,
       this.nominatedMovies.map((value) => {
         return value.cout;
       })
     );
-    // console.log(this.result);
   };
 }
 
@@ -67,6 +76,7 @@ decorate(SocketStore, {
   room: observable,
   nominatedMovies: observable,
   result: observable,
+  start: observable,
 });
 
 const socketStore = new SocketStore();

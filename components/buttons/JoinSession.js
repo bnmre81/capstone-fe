@@ -32,7 +32,7 @@ const JoinSession = () => {
   const handleSubmit = () => {
     socketStore.hostRoom({ room, user });
     closeModal();
-    navigation.replace("MovieList");
+    navigation.replace("Waiting");
   };
 
   //Render
