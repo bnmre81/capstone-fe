@@ -12,13 +12,15 @@ import socketStore from "../../stores/SocketStore";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { observer } from "mobx-react";
+import Waiting from "../Waiting/index";
+import StartNomination from "../StartNomination";
 
 const Stack = createStackNavigator();
 
 const MainStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="NominatedList">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={Home}
@@ -34,6 +36,16 @@ const MainStack = () => {
         <Stack.Screen
           name="Result"
           component={Result}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Waiting"
+          component={Waiting}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="StartNomination"
+          component={StartNomination}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
