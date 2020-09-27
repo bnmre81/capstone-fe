@@ -3,9 +3,17 @@ import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import { View, Text } from "react-native";
 import { Image } from "react-native";
-
-const SelectedMovie = ({ selected, handleNominate }) => {
+import socketStore from "../../stores/SocketStore";
+import { useNavigation } from "@react-navigation/native";
+const SelectedMovie = ({ selected }) => {
   console.log(selected.poster_path);
+
+  const navigation = useNavigation();
+
+  const handleNominate = (item) => {
+    socketStore.nominate(item);
+    navigation.navigate("NominatedList");
+  };
   return (
     <View>
       <View>
@@ -34,7 +42,7 @@ const SelectedMovie = ({ selected, handleNominate }) => {
             position: "absolute",
             width: 300,
             height: 450,
-            borderRadius: 10,
+            borderRadius: 11,
             shadowOffset: { width: 10, height: 10 },
             shadowColor: "white",
             shadowOpacity: 1.0,
@@ -50,7 +58,7 @@ const SelectedMovie = ({ selected, handleNominate }) => {
             position: "absolute",
             width: 300,
             height: 130,
-            borderRadius: 10,
+            borderRadius: 9,
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0,
             top: 470,
@@ -66,24 +74,29 @@ const SelectedMovie = ({ selected, handleNominate }) => {
           >
             {selected.title}
           </Text>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             onPress={() => handleNominate(selected)}
-            style={{ backgroundColor: "#fff" }}
+            style={{
+              backgroundColor: "#04f",
+              borderRadius: 5,
+              width: 85,
+              marginHorizontal: 10,
+              marginTop: 10,
+            }}
           >
             <Text
               style={{
-                position: "absolute",
                 color: "#fff",
                 marginHorizontal: 10,
-                marginTop: 10,
-                left: 200,
-                bottom: 0,
+                marginTop: -1,
+                fontWeight: "bold",
               }}
             >
-              NOMINATE
+              Nominate
             </Text>
-          </TouchableOpacity> */}
-          <Text style={{ color: "#fff", marginHorizontal: 10, marginTop: 10 }}>
+          </TouchableOpacity>
+
+          <Text style={{ color: "#fff", marginHorizontal: 10, marginTop: 7 }}>
             {selected.overview}
           </Text>
         </ScrollView>
@@ -93,13 +106,3 @@ const SelectedMovie = ({ selected, handleNominate }) => {
 };
 
 export default SelectedMovie;
-// style={{
-//     position: "absolute",
-//     width: 300,
-//     height: 100,
-//     borderRadius: 10,
-//     borderTopLeftRadius: 0,
-//     borderTopRightRadius: 0,
-//     top: 500,
-//     right: 40,
-//   }}
