@@ -36,7 +36,7 @@ const StartSession = () => {
   const handleSubmit = () => {
     socketStore.hostRoom({ room, user });
     closeModal();
-    navigation.replace("MovieList");
+    navigation.replace("StartNomination");
   };
   //Render
   return (
