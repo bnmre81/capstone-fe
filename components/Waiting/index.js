@@ -2,9 +2,10 @@ import React from "react";
 import { Container, Text, View } from "native-base";
 import { TextStyled, WaitingMsg } from "./styles";
 import socketStore from "../../stores/SocketStore";
+import { observer } from "mobx-react";
 
 const Waiting = ({ navigation }) => {
-  if (socketStore.start === true) navigation.replace("MovieList");
+  if (socketStore.start) navigation.replace("MovieList");
   return (
     <Container style={{ backgroundColor: "#D999B9" }}>
       <WaitingMsg>
@@ -13,4 +14,4 @@ const Waiting = ({ navigation }) => {
     </Container>
   );
 };
-export default Waiting;
+export default observer(Waiting);

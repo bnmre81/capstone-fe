@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import movieStore from "../../stores/MovieStore";
 import { observer } from "mobx-react";
 // Styles
@@ -27,11 +27,11 @@ const NominatedList = ({ navigation }) => {
           flex: 1,
           owverflow: "visible",
         }}
-        data={socketStore.nominatedMovies}
+        data={socketStore.renderedNominated}
         renderItem={({ item }) => {
           return (
             <View>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => handleUp(item)}>
                 <CaruselImage
                   source={{
                     uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
