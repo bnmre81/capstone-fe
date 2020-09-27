@@ -9,6 +9,7 @@ class SocketStore {
   room = null;
   result = null;
   start = false;
+  done = 0;
 
   connect = () => {
     //BE testing IP

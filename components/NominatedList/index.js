@@ -11,6 +11,7 @@ import socketStore from "../../stores/SocketStore";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const NominatedList = ({ navigation }) => {
+  // if(movieStore.renderedNominated.length===0)navigation.replace("WaitingResult")
   const handleUp = (movie) => {
     socketStore.vote(movie.id);
   };

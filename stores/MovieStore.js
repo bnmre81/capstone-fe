@@ -1,6 +1,8 @@
 import { decorate, observable } from "mobx";
 
 class MovieStore {
+  includeG = null;
+  excludeG = null;
   movies = [];
   randomMoviesList = [];
 
@@ -31,8 +33,8 @@ class MovieStore {
   };
 }
 
-// This is gonna be used to Search for movies
-/// `https://api.themoviedb.org/3/search/movie?api_key=a6358e507fbfbbc6c17a38f10a736e3f&language=en-US&query=${query}&page=1&include_adult=false`
+// Genres
+`https://api.themoviedb.org/3/discover/movie?api_key=a6358e507fbfbbc6c17a38f10a736e3f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${includeG}8&without_genres=${excludeG}`;
 
 decorate(MovieStore, {
   movies: observable,

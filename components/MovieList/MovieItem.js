@@ -9,6 +9,7 @@ import Nominate from "../buttons/Nominate";
 import { Image } from "react-native";
 import { FlatList } from "react-native";
 import SelectedMovie from "./SelectedMovie";
+import movieStore from "../../stores/MovieStore";
 
 const MovieItem = ({ movies }) => {
   const [selected, setSelected] = useState(movies[0]);
@@ -29,7 +30,7 @@ const MovieItem = ({ movies }) => {
         <FlatList
           horizontal
           keyExtractor={(item) => item.id.toString()}
-          data={movies}
+          data={movieStore.randomMoviesList}
           renderItem={({ item }) => {
             return (
               <View>
