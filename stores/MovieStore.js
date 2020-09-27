@@ -9,9 +9,9 @@ class MovieStore {
     for (let i = 0; i < 10; i++) {
       result.push(Math.floor(Math.random() * this.movies.length));
     }
-
-    console.log("these mvoeis", this.movies);
-    result.forEach((element) => {
+    let unique = [...new Set(result)];
+    console.log(unique);
+    unique.forEach((element) => {
       this.randomMoviesList.push(this.movies[element]);
     });
   };
