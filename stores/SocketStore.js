@@ -5,6 +5,7 @@ import io from "socket.io-client";
 class SocketStore {
   socket = null;
   nominatedMovies = [];
+  renderedNominated = [];
   room = null;
   result = null;
   start = false;
@@ -23,6 +24,14 @@ class SocketStore {
           title: movie.title,
           poster_path: movie.poster_path,
           count: 0,
+        },
+      ];
+      this.renderedNominated = [
+        ...this.renderedNominated,
+        {
+          id: movie.id,
+          title: movie.title,
+          poster_path: movie.poster_path,
         },
       ];
     });
@@ -59,6 +68,10 @@ class SocketStore {
   vote = (movieId) => {
     const room = this.room;
     this.socket.emit("vote", { room, movieId });
+    this.renderedNominated = this.renderedNominated.filter(
+      (item) => item.id !== movieId
+    );
+    console.log(this.renderedNominated.length);
   };
 
   highestVote = () => {
@@ -77,6 +90,7 @@ decorate(SocketStore, {
   nominatedMovies: observable,
   result: observable,
   start: observable,
+  renderedNominated: observable,
 });
 
 const socketStore = new SocketStore();
