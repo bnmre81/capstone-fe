@@ -20,25 +20,10 @@ const MovieList = ({ navigation }) => {
 
   const { movies } = movieStore;
 
-  const handleNominate = (item) => {
-    socketStore.nominate(item);
-    navigation.navigate("NominatedList");
-  };
   return (
     <BoxListContainer style={{ backgroundColor: "#222" }}>
-      <MovieItem handleNominate={handleNominate} movies={movies} />
+      <MovieItem navigation={navigation} movies={movies} />
     </BoxListContainer>
   );
 };
 export default observer(MovieList);
-
-{
-  /* <FlatList
-  horizontal
-  keyExtractor={(item) => item.id.toString()}
-  data={movies}
-  renderItem={({ item }) => {
-    return <MovieItem item={item} handleNominate={handleNominate} />;
-  }}
-/> */
-}
