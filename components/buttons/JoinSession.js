@@ -62,7 +62,7 @@ const JoinSession = () => {
         </AuthContainer>
       </Modal>
       <JoinSessionBtn onPress={openModal}>
-        <Text>Join Session</Text>
+        <Text sytle={{ fontSize: 20, fontWeight: "bold" }}>Join Session</Text>
       </JoinSessionBtn>
     </View>
   );

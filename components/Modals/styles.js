@@ -46,12 +46,11 @@ export const AuthOther = styled.Text`
 `;
 
 export const StartSessionBtn = styled.TouchableOpacity`
-  background-color: ${(props) => props.theme.secondary};
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  border-color: ${(props) => props.theme.accent};
-  position: absolute;
-  top: 425px;
-  left: 25%;
+  background-color: white;
+  height: 70;
+  margin-horizontal: 20;
+  border-radius: 35;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30;
 `;
