@@ -1,6 +1,7 @@
 import React from "react";
 import movieStore from "../../stores/MovieStore";
 import { observer } from "mobx-react";
+
 // Styles
 import {
   CarouselContainerView,
@@ -12,6 +13,7 @@ import {
 import { Text, View } from "react-native";
 import Carousel from "react-native-anchor-carousel";
 import Icon from "react-native-vector-icons/Feather";
+
 // Stores
 import socketStore from "../../stores/SocketStore";
 import { TouchableOpacity } from "react-native-gesture-handler";
