@@ -80,13 +80,18 @@ class SocketStore {
     this.socket.emit("nominate", { room, movie });
   };
 
-  vote = (movieId) => {
+  upVote = (movieId) => {
     const room = this.room;
     this.socket.emit("vote", { room, movieId });
     this.renderedNominated = this.renderedNominated.filter(
       (item) => item.id !== movieId
     );
-    console.log(this.renderedNominated.length);
+  };
+
+  downVote = (movieId) => {
+    this.renderedNominated = this.renderedNominated.filter(
+      (item) => item.id !== movieId
+    );
   };
 
   getUsers = () => {

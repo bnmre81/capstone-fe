@@ -18,7 +18,11 @@ import { Button } from "native-base";
 
 const NominatedList = ({ navigation }) => {
   const handleUp = (movie) => {
-    socketStore.vote(movie.id);
+    socketStore.upVote(movie.id);
+  };
+
+  const handleDown = (movie) => {
+    socketStore.downVote(movie.id);
   };
 
   const showResult = () => {
@@ -34,7 +38,7 @@ const NominatedList = ({ navigation }) => {
           flex: 1,
           owverflow: "visible",
         }}
-        data={movieStore.movies}
+        data={socketStore.renderedNominated}
         renderItem={({ item }) => {
           return (
             <View>
@@ -48,15 +52,15 @@ const NominatedList = ({ navigation }) => {
                 <IconContainer>
                   <TouchableOpacity
                     style={{ marginHorizontal: 35 }}
-                    onPress={() => alert("up")}
+                    onPress={() => handleDown(item)}
                   >
-                    <Icon name="thumbs-up" size={30} color="white" />
+                    <Icon name="thumbs-down" size={30} color="white" />
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ marginHorizontal: 35 }}
-                    onPress={() => alert("down")}
+                    onPress={() => handleUp(item)}
                   >
-                    <Icon name="thumbs-down" size={30} color="white" />
+                    <Icon name="thumbs-up" size={30} color="white" />
                   </TouchableOpacity>
                 </IconContainer>
               </TouchableOpacity>
