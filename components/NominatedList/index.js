@@ -14,6 +14,7 @@ import Icon from "react-native-vector-icons/Feather";
 // Stores
 import socketStore from "../../stores/SocketStore";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button } from "native-base";
 
 const NominatedList = ({ navigation }) => {
   const handleUp = (movie) => {
@@ -21,8 +22,8 @@ const NominatedList = ({ navigation }) => {
   };
 
   const showResult = () => {
-    socketStore.highestVote();
-    navigation.navigate("Result");
+    socketStore.DoneVoting();
+    navigation.navigate("WaitingResult");
   };
 
   return (
@@ -66,6 +67,9 @@ const NominatedList = ({ navigation }) => {
         seperationWidth={0}
         inActiveOpacity={0.4}
       />
+      <Button dark onPress={showResult}>
+        <Text>Resultttttttt</Text>
+      </Button>
     </CarouselContainerView>
   );
 };
