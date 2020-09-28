@@ -9,16 +9,16 @@ import Carousel from "react-native-anchor-carousel";
 // Stores
 import socketStore from "../../stores/SocketStore";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button } from "native-base";
 
 const NominatedList = ({ navigation }) => {
-  // if(movieStore.renderedNominated.length===0)navigation.replace("WaitingResult")
   const handleUp = (movie) => {
     socketStore.vote(movie.id);
   };
 
   const showResult = () => {
-    socketStore.highestVote();
-    navigation.navigate("Result");
+    socketStore.DoneVoting();
+    navigation.navigate("WaitingResult");
   };
 
   return (
@@ -47,6 +47,9 @@ const NominatedList = ({ navigation }) => {
         seperationWidth={0}
         inActiveOpacity={0.4}
       />
+      <Button dark onPress={showResult}>
+        <Text>Resultttttttt</Text>
+      </Button>
     </CarouselContainerView>
   );
 };

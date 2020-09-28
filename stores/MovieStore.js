@@ -34,7 +34,7 @@ class MovieStore {
 }
 
 // Genres
-`https://api.themoviedb.org/3/discover/movie?api_key=a6358e507fbfbbc6c17a38f10a736e3f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${includeG}8&without_genres=${excludeG}`;
+// `https://api.themoviedb.org/3/discover/movie?api_key=a6358e507fbfbbc6c17a38f10a736e3f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${includeG}8&without_genres=${excludeG}`;
 
 decorate(MovieStore, {
   movies: observable,

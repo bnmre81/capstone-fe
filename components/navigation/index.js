@@ -14,6 +14,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { observer } from "mobx-react";
 import Waiting from "../Waiting/index";
 import StartNomination from "../StartNomination";
+import WaitingResult from "../WaitingResult";
 
 const Stack = createStackNavigator();
 
@@ -46,6 +47,11 @@ const MainStack = () => {
         <Stack.Screen
           name="StartNomination"
           component={StartNomination}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="WaitingResult"
+          component={WaitingResult}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

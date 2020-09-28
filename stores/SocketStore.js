@@ -6,6 +6,7 @@ class SocketStore {
   socket = null;
   nominatedMovies = [];
   renderedNominated = [];
+  users = null;
   room = null;
   result = null;
   start = false;
@@ -37,6 +38,11 @@ class SocketStore {
       ];
     });
 
+    // Start Process
+    this.socket.on("start", ({ room }) => {
+      this.start = true;
+    });
+
     // recieve Votes
     this.socket.on("vote", ({ room, movieId }) => {
       this.nominatedMovies.forEach((nominated) => {
@@ -46,9 +52,16 @@ class SocketStore {
       });
     });
 
-    // Start Process
-    this.socket.on("start", ({ room }) => {
-      this.start = true;
+    // Done Voting
+    this.socket.on("done", ({ room }) => {
+      this.done++;
+    });
+
+    // Users in room
+    this.socket.on("getUsers", (clients) => {
+      this.users = clients.length;
+      console.log("clients.length", clients);
+      console.log("clients.length", this.done);
     });
   };
 
@@ -66,6 +79,7 @@ class SocketStore {
     const room = this.room;
     this.socket.emit("nominate", { room, movie });
   };
+
   vote = (movieId) => {
     const room = this.room;
     this.socket.emit("vote", { room, movieId });
@@ -75,13 +89,23 @@ class SocketStore {
     console.log(this.renderedNominated.length);
   };
 
+  getUsers = () => {
+    const room = this.room;
+    this.socket.emit("getUsers", { room });
+  };
+
+  DoneVoting = () => {
+    const room = this.room;
+
+    this.socket.emit("done", { room });
+    this.getUsers(room);
+  };
+
   highestVote = () => {
-    this.result = Math.max.apply(
-      Math,
-      this.nominatedMovies.map((value) => {
-        return value.cout;
-      })
-    );
+    this.nominatedMovies = this.nominatedMovies.sort((a, b) => {
+      return b - a;
+    });
+    this.result = this.nominatedMovies[0];
   };
 }
 
@@ -92,6 +116,8 @@ decorate(SocketStore, {
   result: observable,
   start: observable,
   renderedNominated: observable,
+  users: observable,
+  done: observable,
 });
 
 const socketStore = new SocketStore();
