@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import movieStore from "../../stores/MovieStore";
 import { observer } from "mobx-react";
 // Styles
@@ -7,6 +7,7 @@ import {
   CaruselText,
   CaruselImage,
   IconContainer,
+  ResultBtn,
 } from "./styles";
 import { Text, View } from "react-native";
 import Carousel from "react-native-anchor-carousel";
@@ -31,47 +32,62 @@ const NominatedList = ({ navigation }) => {
   };
 
   return (
-    <View style={{ backgroundColor: "black" }}>
-      <CarouselContainerView style={{ height: "100%", marginHorizontal: 5 }}>
-        <Carousel
-          sytle={{
-            flex: 1,
-            owverflow: "visible",
-          }}
-          data={socketStore.renderedNominated}
-          renderItem={({ item }) => {
-            return (
-              <View>
-                <CaruselImage
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
-                  }}
-                />
-                <CaruselText>{item.title}</CaruselText>
-                <IconContainer>
-                  <TouchableOpacity
-                    style={{ marginHorizontal: 50 }}
-                    onPress={() => handleDown(item)}
-                  >
-                    <Icon name="thumbs-down" size={30} color="white" />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={{ marginHorizontal: 50 }}
-                    onPress={() => handleUp(item)}
-                  >
-                    <Icon name="thumbs-up" size={30} color="white" />
-                  </TouchableOpacity>
-                </IconContainer>
-              </View>
-            );
-          }}
-          itemWidth={260}
-          seperationWidth={0}
-          inActiveOpacity={0.3}
-        />
-        <Button dark onPress={showResult}>
-          <Text>Resultttttttt</Text>
-        </Button>
+    <View style={{ backgroundColor: "#000" }}>
+      <CarouselContainerView
+        style={{ height: "100%", marginTop: 30, marginHorizontal: 20 }}
+      >
+        {socketStore.renderedNominated.length === 0 ? (
+          <View style={{ height: "0%" }}>
+            <ResultBtn onPress={showResult}>
+              <Text
+                style={{ color: "black", fontWeight: "bold", fontSize: 20 }}
+              >
+                Show Result
+              </Text>
+            </ResultBtn>
+          </View>
+        ) : (
+          <Carousel
+            data={socketStore.renderedNominated}
+            renderItem={({ item }) => {
+              if (!item.poster_path) {
+                return (
+                  <View
+                    style={{ width: 150, height: 200, backgroundColor: "red" }}
+                  ></View>
+                );
+              }
+              return (
+                <View style={{ marginHorizontal: 0 }}>
+                  <CaruselImage
+                    source={{
+                      uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                    }}
+                    style={{ borderColor: "#fff", borderWidth: 2 }}
+                  />
+                  <CaruselText>{item.title}</CaruselText>
+                  <IconContainer>
+                    <TouchableOpacity
+                      style={{ marginHorizontal: 50, marginTop: 5 }}
+                      onPress={() => handleDown(item)}
+                    >
+                      <Icon name="thumbs-down" size={30} color="#fff" />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{ marginHorizontal: 50 }}
+                      onPress={() => handleUp(item)}
+                    >
+                      <Icon name="thumbs-up" size={30} color="#fff" />
+                    </TouchableOpacity>
+                  </IconContainer>
+                </View>
+              );
+            }}
+            itemWidth={270}
+            seperationWidth={0}
+            inActiveOpacity={0.3}
+          />
+        )}
       </CarouselContainerView>
     </View>
   );
