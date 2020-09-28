@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
 const MainStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="NominatedList">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={Home}
