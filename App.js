@@ -9,7 +9,7 @@ import MainStack from "./components/navigation";
 const theme = {
   primary: "#0A0E28",
   secondary: "#2493A2",
-  accent: "#DCB13C",
+  accent: "#DCd33C",
 };
 
 export default function App() {

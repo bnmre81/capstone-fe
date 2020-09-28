@@ -21,7 +21,7 @@ const MovieList = ({ navigation }) => {
   const { movies } = movieStore;
 
   return (
-    <BoxListContainer style={{ backgroundColor: "#222" }}>
+    <BoxListContainer style={{ backgroundColor: "#111" }}>
       <MovieItem navigation={navigation} movies={movies} />
     </BoxListContainer>
   );

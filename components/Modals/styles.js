@@ -1,11 +1,11 @@
 import styled from "styled-components/native";
 
 export const AuthContainer = styled.View`
-  flex: 1;
+  height: 100%;
   align-self: stretch;
   justify-content: center;
   align-items: center;
-  background-color: #393e46;
+
   padding-right: 60px;
   padding-left: 60px;
 `;
@@ -23,16 +23,16 @@ export const AuthTextInput = styled.TextInput`
   height: 40px;
   margin-bottom: 30px;
   color: #decdc3;
-  border-bottom-color: #bbe1fa;
+  border-bottom-color: ${(props) => props.theme.accent};
   border-bottom-width: 1px;
 `;
 export const AuthButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;
   padding: 20px;
-  background-color: #bbe1fa;
+  background-color: ${(props) => props.theme.accent};
   margin-top: 30px;
-  border-radius: 7px;
+  border-radius: 15px;
 `;
 
 export const AuthButtonText = styled.Text`
@@ -56,7 +56,7 @@ export const StartSessionBtn = styled.TouchableOpacity`
 `;
 
 export const JoinSessionBtn = styled.TouchableOpacity`
-  background-color: #eee;
+  background-color: ${(props) => props.theme.accent};
   height: 70;
   margin-horizontal: 20;
   border-radius: 35;
