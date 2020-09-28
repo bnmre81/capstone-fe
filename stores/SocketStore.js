@@ -25,6 +25,7 @@ class SocketStore {
           id: movie.id,
           title: movie.title,
           poster_path: movie.poster_path,
+          overview: movie.overview,
           count: 0,
         },
       ];
