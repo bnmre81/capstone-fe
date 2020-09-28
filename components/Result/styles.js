@@ -27,7 +27,7 @@ export const TextContainer = styled.View`
 
 export const TextBackground = styled.View`
   margin: 1px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.88);
   border-bottom-left-radius: 25px;
   border-top-right-radius: 25px;
   padding: 5px 10px 10px 10px;
