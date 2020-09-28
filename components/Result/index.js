@@ -21,11 +21,12 @@ import {
 // Stores
 import socketStore from "../../stores/SocketStore";
 import { observer } from "mobx-react";
+import movieStore from "../../stores/MovieStore";
 
 const Result = ({ navigation }) => {
   const result = socketStore.result;
   if (!result) return <Spinner />;
-
+  console.log(socketStore.nominatedMovies[0].description);
   return (
     <ResultContainer>
       <ScrollView>
@@ -40,18 +41,12 @@ const Result = ({ navigation }) => {
               <Back>
                 <AntDesign name="arrowleft" size={24} color="#FFF" />
               </Back>
-              <Text>Result here!</Text>
             </MenuBar>
             <MainStyle>
               <TextContainer>
                 <TextBackground>
                   <TitleText>{result.title}</TitleText>
-                  <DetailText>
-                    This movie is about a guy who is trying the impossible, but
-                    he doesn't know that they know, and at the end you'll see
-                    that he knows that they know, and they know that he knows
-                    that they know!
-                  </DetailText>
+                  <DetailText>{result.overview}</DetailText>
                 </TextBackground>
               </TextContainer>
             </MainStyle>
