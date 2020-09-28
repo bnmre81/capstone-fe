@@ -2,11 +2,12 @@ import styled from "styled-components/native";
 
 export const ResultContainer = styled.View`
   flex: 1;
-  background-color: #fff;
+  background-color: #000;
 `;
 
 export const ResultBackground = styled.ImageBackground`
   width: 100%;
+  height: 100%;
 `;
 
 export const MenuBar = styled.View`
@@ -17,7 +18,7 @@ export const MenuBar = styled.View`
 
 export const MainStyle = styled.View`
   padding: 0 32px;
-  margin: 200px 0 32px 0;
+  margin: 525px 0 32px 0;
 `;
 
 export const TextContainer = styled.View`
@@ -26,7 +27,7 @@ export const TextContainer = styled.View`
 
 export const TextBackground = styled.View`
   margin: 1px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.88);
   border-bottom-left-radius: 25px;
   border-top-right-radius: 25px;
   padding: 5px 10px 10px 10px;

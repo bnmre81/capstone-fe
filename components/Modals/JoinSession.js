@@ -10,7 +10,7 @@ import {
   JoinSessionBtn,
 } from "./styles";
 import { Text } from "native-base";
-import { TouchableOpacity, View, Modal } from "react-native";
+import { TouchableOpacity, View, Modal, ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const JoinSession = () => {
@@ -39,30 +39,38 @@ const JoinSession = () => {
   return (
     <View>
       <Modal animationType="slide" transparent={true} visible={isOpen}>
-        <AuthContainer>
-          <AuthTitle>Join</AuthTitle>
-          <AuthTextInput
-            onChangeText={(username) => setUser(username)}
-            placeholder="User"
-            autoCapitalize="none"
-            placeholderTextColor="#A6AEC1"
-          />
-          <AuthTextInput
-            onChangeText={(roomName) => setRoom(roomName)}
-            placeholder="Room Name"
-            autoCapitalize="none"
-            placeholderTextColor="#A6AEC1"
-          />
-          <AuthButton onPress={handleSubmit}>
-            <AuthButtonText>Join Session</AuthButtonText>
-          </AuthButton>
-          <TouchableOpacity onPress={closeModal}>
-            <Text style={{ marginTop: 20, color: "#bbe1fa" }}>Cancel</Text>
-          </TouchableOpacity>
-        </AuthContainer>
+        <ImageBackground
+          source={{
+            uri:
+              "https://i.pinimg.com/originals/b5/eb/7e/b5eb7ed0245cdcf6e68cf8f283e6190d.jpg",
+          }}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <AuthContainer>
+            <AuthTitle>Join</AuthTitle>
+            <AuthTextInput
+              onChangeText={(username) => setUser(username)}
+              placeholder="User"
+              autoCapitalize="none"
+              placeholderTextColor="#fff"
+            />
+            <AuthTextInput
+              onChangeText={(roomName) => setRoom(roomName)}
+              placeholder="Room Name"
+              autoCapitalize="none"
+              placeholderTextColor="#fff"
+            />
+            <AuthButton onPress={handleSubmit}>
+              <AuthButtonText>Join Session</AuthButtonText>
+            </AuthButton>
+            <TouchableOpacity onPress={closeModal}>
+              <Text style={{ marginTop: 20, color: "#fff" }}>Cancel</Text>
+            </TouchableOpacity>
+          </AuthContainer>
+        </ImageBackground>
       </Modal>
       <JoinSessionBtn onPress={openModal}>
-        <Text sytle={{ fontSize: 20, fontWeight: "bold" }}>Join Session</Text>
+        <AuthButtonText>Join Session</AuthButtonText>
       </JoinSessionBtn>
     </View>
   );

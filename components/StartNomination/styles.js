@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const StartNominationButton = styled.TouchableOpacity`
-  background-color: #eee;
+  background-color: ${(props) => props.theme.accent};
   height: 70;
   margin-horizontal: 20;
   border-radius: 35;

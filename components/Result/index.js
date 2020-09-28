@@ -28,32 +28,20 @@ const Result = ({ navigation }) => {
   if (!result) return <Spinner />;
   console.log(socketStore.nominatedMovies[0].description);
   return (
-    <ResultContainer>
-      <ScrollView>
-        <StatusBar barStyle="light-Content" />
-        <ResultBackground
-          source={{
-            uri: `https://image.tmdb.org/t/p/w500${result.poster_path}`,
-          }}
-        >
-          <SafeAreaView>
-            <MenuBar>
-              <Back>
-                <AntDesign name="arrowleft" size={24} color="#FFF" />
-              </Back>
-            </MenuBar>
-            <MainStyle>
-              <TextContainer>
-                <TextBackground>
-                  <TitleText>{result.title}</TitleText>
-                  <DetailText>{result.overview}</DetailText>
-                </TextBackground>
-              </TextContainer>
-            </MainStyle>
-          </SafeAreaView>
-        </ResultBackground>
-      </ScrollView>
-    </ResultContainer>
+    <ResultBackground
+      source={{
+        uri: `https://image.tmdb.org/t/p/w500${result.poster_path}`,
+      }}
+    >
+      <MainStyle>
+        <TextContainer>
+          <TextBackground>
+            <TitleText>{result.title}</TitleText>
+            <DetailText>{result.overview}</DetailText>
+          </TextBackground>
+        </TextContainer>
+      </MainStyle>
+    </ResultBackground>
   );
 };
 export default observer(Result);
