@@ -20,7 +20,7 @@ const Stack = createStackNavigator();
 const MainStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="NominatedList">
         <Stack.Screen
           name="Home"
           component={Home}

@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import movieStore from "../../stores/MovieStore";
 import { observer } from "mobx-react";
 // Styles
-import { CarouselContainerView, CaruselText, CaruselImage } from "./styles";
+import {
+  CarouselContainerView,
+  CaruselText,
+  CaruselImage,
+  IconContainer,
+} from "./styles";
 import { Text, View } from "react-native";
 import Carousel from "react-native-anchor-carousel";
-
+import Icon from "react-native-vector-icons/Feather";
 // Stores
 import socketStore from "../../stores/SocketStore";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -22,12 +27,13 @@ const NominatedList = ({ navigation }) => {
 
   return (
     <CarouselContainerView style={{ height: 600 }}>
+      <Text>hello</Text>
       <Carousel
         sytle={{
           flex: 1,
           owverflow: "visible",
         }}
-        data={socketStore.renderedNominated}
+        data={movieStore.movies}
         renderItem={({ item }) => {
           return (
             <View>
@@ -38,6 +44,20 @@ const NominatedList = ({ navigation }) => {
                   }}
                 />
                 <CaruselText>{item.title}</CaruselText>
+                <IconContainer>
+                  <TouchableOpacity
+                    style={{ marginHorizontal: 35 }}
+                    onPress={() => alert("up")}
+                  >
+                    <Icon name="thumbs-up" size={30} color="white" />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{ marginHorizontal: 35 }}
+                    onPress={() => alert("down")}
+                  >
+                    <Icon name="thumbs-down" size={30} color="white" />
+                  </TouchableOpacity>
+                </IconContainer>
               </TouchableOpacity>
             </View>
           );
@@ -51,6 +71,8 @@ const NominatedList = ({ navigation }) => {
 };
 
 export default observer(NominatedList);
+
+// data: socketStore.renderedNominated
 
 // <BoxListContainer>
 //   <FlatList

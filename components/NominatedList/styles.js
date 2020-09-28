@@ -17,7 +17,14 @@ export const CaruselImage = styled.Image`
 
 export const CaruselText = styled.Text`
   color: ${(props) => props.theme.accent};
-  padding: 14px;
+
   text-align: center;
   font-weight: bold;
+`;
+
+export const IconContainer = styled.View`
+  margin: 10px 0;
+  width: 200;
+  height: 30;
+  flex-direction: row;
 `;
