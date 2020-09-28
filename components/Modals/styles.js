@@ -54,3 +54,12 @@ export const StartSessionBtn = styled.TouchableOpacity`
   justify-content: center;
   margin-bottom: 30;
 `;
+
+export const JoinSessionBtn = styled.TouchableOpacity`
+  background-color: #eee;
+  height: 70;
+  margin-horizontal: 20;
+  border-radius: 35;
+  align-items: center;
+  justify-content: center;
+`;

@@ -31,18 +31,17 @@ const NominatedList = ({ navigation }) => {
   };
 
   return (
-    <CarouselContainerView style={{ height: 600 }}>
-      <Text>hello</Text>
-      <Carousel
-        sytle={{
-          flex: 1,
-          owverflow: "visible",
-        }}
-        data={socketStore.renderedNominated}
-        renderItem={({ item }) => {
-          return (
-            <View>
-              <TouchableOpacity onPress={() => handleUp(item)}>
+    <View style={{ backgroundColor: "black" }}>
+      <CarouselContainerView style={{ height: "100%", marginHorizontal: 5 }}>
+        <Carousel
+          sytle={{
+            flex: 1,
+            owverflow: "visible",
+          }}
+          data={socketStore.renderedNominated}
+          renderItem={({ item }) => {
+            return (
+              <View>
                 <CaruselImage
                   source={{
                     uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
@@ -51,30 +50,30 @@ const NominatedList = ({ navigation }) => {
                 <CaruselText>{item.title}</CaruselText>
                 <IconContainer>
                   <TouchableOpacity
-                    style={{ marginHorizontal: 35 }}
+                    style={{ marginHorizontal: 50 }}
                     onPress={() => handleDown(item)}
                   >
                     <Icon name="thumbs-down" size={30} color="white" />
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={{ marginHorizontal: 35 }}
+                    style={{ marginHorizontal: 50 }}
                     onPress={() => handleUp(item)}
                   >
                     <Icon name="thumbs-up" size={30} color="white" />
                   </TouchableOpacity>
                 </IconContainer>
-              </TouchableOpacity>
-            </View>
-          );
-        }}
-        itemWidth={200}
-        seperationWidth={0}
-        inActiveOpacity={0.4}
-      />
-      <Button dark onPress={showResult}>
-        <Text>Resultttttttt</Text>
-      </Button>
-    </CarouselContainerView>
+              </View>
+            );
+          }}
+          itemWidth={260}
+          seperationWidth={0}
+          inActiveOpacity={0.3}
+        />
+        <Button dark onPress={showResult}>
+          <Text>Resultttttttt</Text>
+        </Button>
+      </CarouselContainerView>
+    </View>
   );
 };
 

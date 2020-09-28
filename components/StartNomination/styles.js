@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const StartNominationButton = styled.TouchableOpacity`
-  background-color: #7d8ca3;
+  background-color: #eee;
   height: 70;
   margin-horizontal: 20;
   border-radius: 35;
@@ -13,5 +13,5 @@ export const StartNominationButton = styled.TouchableOpacity`
 export const StartNominationContainer = styled.View`
   width: 100%;
   height: 100%;
-  background-color: #36311f;
+  background-color: #000;
 `;

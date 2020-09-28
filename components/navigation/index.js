@@ -33,7 +33,11 @@ const MainStack = () => {
           component={MovieList}
           options={{ title: socketStore.room, headerShown: false }}
         />
-        <Stack.Screen name="NominatedList" component={NominatedList} />
+        <Stack.Screen
+          name="NominatedList"
+          component={NominatedList}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Result"
           component={Result}
