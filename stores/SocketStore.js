@@ -1,9 +1,11 @@
 import { decorate, observable } from "mobx";
+import { Toast } from "native-base";
 
 // Socket Io BE connection
 import io from "socket.io-client";
 class SocketStore {
   socket = null;
+  name = null;
   nominatedMovies = [];
   renderedNominated = [];
   users = null;
@@ -54,20 +56,24 @@ class SocketStore {
     });
 
     // Done Voting
-    this.socket.on("done", ({ room }) => {
+    this.socket.on("done", ({ username }) => {
       this.done++;
+      Toast.show({
+        text: `${username} is done voting`,
+        buttonText: "Okay",
+        duration: 2000,
+      });
     });
 
     // Users in room
     this.socket.on("getUsers", (clients) => {
       this.users = clients.length;
-      console.log("clients.length", clients);
-      console.log("clients.length", this.done);
     });
   };
 
   hostRoom = ({ room, user }) => {
     this.socket.emit("join_room", { room, user });
+    this.name = user;
     this.room = room;
   };
 
@@ -102,14 +108,14 @@ class SocketStore {
 
   DoneVoting = () => {
     const room = this.room;
-
-    this.socket.emit("done", { room });
+    const username = this.name;
+    this.socket.emit("done", { room, username });
     this.getUsers(room);
   };
 
   highestVote = () => {
     this.nominatedMovies = this.nominatedMovies.sort((a, b) => {
-      return b - a;
+      return a - b;
     });
     this.result = this.nominatedMovies[0];
   };
@@ -124,6 +130,7 @@ decorate(SocketStore, {
   renderedNominated: observable,
   users: observable,
   done: observable,
+  name: observable,
 });
 
 const socketStore = new SocketStore();
