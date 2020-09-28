@@ -12,7 +12,7 @@ import SelectedMovie from "./SelectedMovie";
 import movieStore from "../../stores/MovieStore";
 
 const MovieItem = ({ movies }) => {
-  const [selected, setSelected] = useState(movies[0]);
+  const [selected, setSelected] = useState(movieStore.randomMoviesList[0]);
   const handleSelect = (item) => {
     setSelected(item);
   };
