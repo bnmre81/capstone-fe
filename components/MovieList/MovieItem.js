@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Text, Card, Thumbnail, View } from "native-base";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
 // Styles
-import { BoxItemText } from "./itemStyles";
-// Components
-import Nominate from "../buttons/Nominate";
+import { Text, View } from "native-base";
 import { Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { FlatList } from "react-native";
+
+// Components
 import SelectedMovie from "./SelectedMovie";
+
+// Stores
 import movieStore from "../../stores/MovieStore";
 
 const MovieItem = ({ movies }) => {

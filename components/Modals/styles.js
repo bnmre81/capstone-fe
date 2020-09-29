@@ -47,19 +47,19 @@ export const AuthOther = styled.Text`
 
 export const StartSessionBtn = styled.TouchableOpacity`
   background-color: white;
-  height: 70;
-  margin-horizontal: 20;
-  border-radius: 35;
+  height: 70px;
+  margin-horizontal: 20px;
+  border-radius: 35px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30;
+  margin-bottom: 30px;
 `;
 
 export const JoinSessionBtn = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.accent};
-  height: 70;
-  margin-horizontal: 20;
-  border-radius: 35;
+  height: 70px;
+  margin-horizontal: 20px;
+  border-radius: 35px;
   align-items: center;
   justify-content: center;
 `;
