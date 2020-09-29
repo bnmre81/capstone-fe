@@ -114,10 +114,10 @@ class SocketStore {
   };
 
   highestVote = () => {
-    this.nominatedMovies = this.nominatedMovies.sort((a, b) => {
-      return a - b;
+    const sorted = this.nominatedMovies.sort((a, b) => {
+      return b.count - a.count;
     });
-    this.result = this.nominatedMovies[0];
+    this.result = sorted[0];
   };
 }
 

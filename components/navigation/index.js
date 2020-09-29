@@ -1,9 +1,13 @@
 import React from "react";
+
 // Components
 import MovieList from "../MovieList";
 import NominatedList from "../NominatedList";
 import Result from "../Result";
 import Home from "../Home";
+import Waiting from "../Waiting/index";
+import StartNomination from "../StartNomination";
+import WaitingResult from "../WaitingResult";
 
 // Stores
 import socketStore from "../../stores/SocketStore";
@@ -12,9 +16,6 @@ import socketStore from "../../stores/SocketStore";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { observer } from "mobx-react";
-import Waiting from "../Waiting/index";
-import StartNomination from "../StartNomination";
-import WaitingResult from "../WaitingResult";
 
 const Stack = createStackNavigator();
 

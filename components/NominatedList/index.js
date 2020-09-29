@@ -1,5 +1,4 @@
 import React from "react";
-import movieStore from "../../stores/MovieStore";
 import { observer } from "mobx-react";
 
 // Styles
@@ -13,11 +12,10 @@ import {
 import { Text, View } from "react-native";
 import Carousel from "react-native-anchor-carousel";
 import Icon from "react-native-vector-icons/Feather";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 // Stores
 import socketStore from "../../stores/SocketStore";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Button } from "native-base";
 
 const NominatedList = ({ navigation }) => {
   const handleUp = (movie) => {
@@ -96,37 +94,3 @@ const NominatedList = ({ navigation }) => {
 };
 
 export default observer(NominatedList);
-
-// data: socketStore.renderedNominated
-
-// <BoxListContainer>
-//   <FlatList
-//     keyExtractor={(item) => item.id.toString()}
-//     data={movieStore.movies}
-//     renderItem={({ item }) => {
-//       return (
-//         <ListItem avatar>
-//           <Left>
-//             <Thumbnail
-//               source={{
-//                 uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
-//               }}
-//             />
-//           </Left>
-//           <Body>
-//             <BoxItemText>{item.title}</BoxItemText>
-//           </Body>
-//           <TouchableOpacity onPress={() => handleUp(item)}>
-//             <Icon name="thumbs-down" size={30} />
-//           </TouchableOpacity>
-//           <TouchableOpacity onPress={handleDown}>
-//             <Icon name="thumbs-up" size={30} sytle={{ margin: 150 }} />
-//           </TouchableOpacity>
-//         </ListItem>
-//       );
-//     }}
-//   />
-//   <TouchableOpacity onPress={showResult}>
-//     <Icon name="airplay" size={30} sytle={{ margin: 150 }} />
-//   </TouchableOpacity>
-// </BoxListContainer>

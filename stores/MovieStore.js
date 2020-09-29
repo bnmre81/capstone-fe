@@ -12,7 +12,6 @@ class MovieStore {
       result.push(Math.floor(Math.random() * this.movies.length));
     }
     let unique = [...new Set(result)];
-    console.log(unique);
     unique.forEach((element) => {
       this.randomMoviesList.push(this.movies[element]);
     });

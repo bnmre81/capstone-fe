@@ -1,9 +1,14 @@
 import React from "react";
+import { observer } from "mobx-react";
+
+// Styles
 import { Text, View } from "native-base";
 import { StartNominationButton, StartNominationContainer } from "./styles";
-import socketStore from "../../stores/SocketStore";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { ImageBackground } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+// Stores
+import socketStore from "../../stores/SocketStore";
+
 const StartNomination = ({ navigation }) => {
   handleStart = () => {
     socketStore.startNomination();
@@ -23,8 +28,11 @@ const StartNomination = ({ navigation }) => {
             <Text>Start Nomination here!</Text>
           </StartNominationButton>
         </TouchableOpacity>
+        <Text>
+          {socketStore.users} Users in Room:{socketStore.room}
+        </Text>
       </ImageBackground>
     </StartNominationContainer>
   );
 };
-export default StartNomination;
+export default observer(StartNomination);

@@ -2,9 +2,9 @@ import styled from "styled-components/native";
 
 export const JoinSessionBtn = styled.TouchableOpacity`
   background-color: #ab9b96;
-  height: 70;
-  margin-horizontal: 20;
-  border-radius: 35;
+  height: 70px;
+  margin-horizontal: 20px;
+  border-radius: 35px;
   align-items: center;
   justify-content: center;
 `;
