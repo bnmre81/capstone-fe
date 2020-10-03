@@ -2,8 +2,12 @@ import React from "react";
 import { observer } from "mobx-react";
 
 // Styles
-import { Text, View } from "native-base";
-import { StartNominationButton, StartNominationContainer } from "./styles";
+import { Text } from "native-base";
+import {
+  ConnectedText,
+  StartNominationButton,
+  StartNominationContainer,
+} from "./styles";
 import { ImageBackground } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 // Stores
@@ -28,9 +32,7 @@ const StartNomination = ({ navigation }) => {
             <Text>Start Nomination here!</Text>
           </StartNominationButton>
         </TouchableOpacity>
-        <Text>
-          {socketStore.users} Users in Room:{socketStore.room}
-        </Text>
+        <ConnectedText>{socketStore.users} Users Connected</ConnectedText>
       </ImageBackground>
     </StartNominationContainer>
   );

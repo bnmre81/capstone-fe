@@ -8,6 +8,7 @@ import { ImageBackground } from "react-native";
 
 // Stores
 import socketStore from "../../stores/SocketStore";
+import { ConnectedText } from "../StartNomination/styles";
 
 const WaitingResult = ({ navigation }) => {
   if (socketStore.users === socketStore.done) {
@@ -26,9 +27,9 @@ const WaitingResult = ({ navigation }) => {
         <WaitingMsg>
           <TextStyled>Waiting for Result</TextStyled>
         </WaitingMsg>
-        <Text>
-          {socketStore.done}/{socketStore.users}
-        </Text>
+        <ConnectedText>
+          {socketStore.done}/{socketStore.users} Done
+        </ConnectedText>
       </ImageBackground>
     </Container>
   );

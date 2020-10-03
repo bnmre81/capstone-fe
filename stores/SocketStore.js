@@ -114,7 +114,9 @@ class SocketStore {
   };
 
   highestVote = () => {
-    const sorted = this.nominatedMovies.sort((a, b) => {
+    const sorted = [];
+    this.nominatedMovies.forEach((i) => sorted.push(i));
+    sorted.sort((a, b) => {
       return b.count - a.count;
     });
     this.result = sorted[0];

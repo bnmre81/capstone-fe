@@ -8,6 +8,7 @@ import { ImageBackground } from "react-native";
 
 // Stores
 import socketStore from "../../stores/SocketStore";
+import { ConnectedText } from "../StartNomination/styles";
 
 const Waiting = ({ navigation }) => {
   if (socketStore.start) navigation.replace("MovieList");
@@ -20,9 +21,9 @@ const Waiting = ({ navigation }) => {
         }}
         style={{ width: "100%", height: "100%" }}
       >
-        <WaitingMsg>
-          <TextStyled>Waiting for host to start session ...</TextStyled>
-        </WaitingMsg>
+        <ConnectedText style={{ marginTop: 300 }}>
+          Waiting for Host to Start
+        </ConnectedText>
         <Spinner />
       </ImageBackground>
     </Container>

@@ -19,7 +19,7 @@ const Home = () => {
         }}
         style={{ width: "100%", height: "100%" }}
       >
-        <View style={{ marginTop: 500 }}>
+        <View style={{ marginTop: 330 }}>
           <StartSession />
           <JoinSession />
         </View>
