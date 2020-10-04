@@ -17,7 +17,6 @@ export const CaruselImage = styled.Image`
 
 export const CaruselText = styled.Text`
   color: ${(props) => props.theme.accent};
-  margin-vertical: 10px;
   text-align: center;
   font-weight: bold;
 `;
@@ -32,7 +31,6 @@ export const IconContainer = styled.View`
 export const StartNominationButton = styled.TouchableOpacity`
   background-color: #7d8ca3;
   height: 70px;
-  margin-horizontal: 20;
   border-radius: 35px;
   align-items: center;
   justify-content: center;
@@ -43,11 +41,10 @@ export const ResultBtn = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.accent};
   height: 70px;
   width: 300px;
-  margin-horizontal: 20;
   border-radius: 35px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30;
+  margin-bottom: 30px;
 `;
 
 // background-color: ${(props) => props.theme.primary};
