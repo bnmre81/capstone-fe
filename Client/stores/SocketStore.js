@@ -1,4 +1,4 @@
-import { decorate, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { Toast } from "native-base";
 
 // Socket Io BE connection
@@ -14,12 +14,16 @@ class SocketStore {
   start = false;
   done = 0;
 
+  constructor() {
+    makeAutoObservable(this);
+  }
+
   connect = () => {
     //BE testing IP
-    // this.socket = io("http://10.0.2.2:8000/");
+    this.socket = io("http://10.0.2.2:8000/");
 
     //heroku BE
-    this.socket = io("https://peaceful-shelf-49575.herokuapp.com/");
+    // this.socket = io("http://localhost:8000/");
     this.socket.on("nominate", ({ room, movie }) => {
       this.nominatedMovies = [
         ...this.nominatedMovies,
@@ -122,18 +126,6 @@ class SocketStore {
     this.result = sorted[0];
   };
 }
-
-decorate(SocketStore, {
-  socket: observable,
-  room: observable,
-  nominatedMovies: observable,
-  result: observable,
-  start: observable,
-  renderedNominated: observable,
-  users: observable,
-  done: observable,
-  name: observable,
-});
 
 const socketStore = new SocketStore();
 

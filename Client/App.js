@@ -2,6 +2,7 @@ import { Root } from "native-base";
 import React, { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import * as Font from "expo-font";
+import { observer } from "mobx-react";
 
 // Main Navigator
 import MainStack from "./components/navigation";
@@ -12,7 +13,7 @@ const theme = {
   accent: "#DCd33C",
 };
 
-export default function App() {
+function App() {
   useEffect(() => {
     (async () =>
       await Font.loadAsync({
@@ -28,3 +29,5 @@ export default function App() {
     </ThemeProvider>
   );
 }
+
+export default observer(App);
